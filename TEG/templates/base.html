@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    {% block head %}
+    {% endblock %}
+    {% load static %}
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <p>Texto ejemplo</p>
+        </div>
+        <div class="container">
+            <p>Texto ejemplo</p>
+        </div>
+        <div class="container">
+            <p>Texto ejemplo</p>
+        </div>
+    </header>
+{% block content %}
+{% endblock %}
+<header class="header">
+    <div class="container">
+        <a href="{% url 'home' %}" class="center"><img width="40px" src="{% static 'security-camera.png' %}"></a>
+        <p class="center"> Diseñado por Saúl Monique</p>
+    </div>
+</header>
+</body>
+</html>
