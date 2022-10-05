@@ -4,17 +4,21 @@
     {% endblock %}
     {% load static %}
 
+
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <p>Texto ejemplo</p>
+            <a href="{% url 'home' %}"><img width="50px" src="{% static '/images/psicologia.png' %}"></a>
         </div>
         <div class="container">
-            <p>Texto ejemplo</p>
+            <a class="center " href="{% url 'home' %}"><img width="50px" src="{% static '/images/add.png' %}"></a>
+            <p class="center ">Agendar sesión</p>
+
         </div>
         <div class="container">
-            <p>Texto ejemplo</p>
+            <a  class="header-derecho" href="{% url 'home' %}"><img width="50px" src="{% static '/images/user.png' %}"></a>
+            <a class="header-derecho" href="{% url 'home' %}"><img width="50px" src="{% static '/images/hamburger.png' %}"></a>
         </div>
     </header>
 {% block content %}
