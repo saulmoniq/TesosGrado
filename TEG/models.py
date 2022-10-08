@@ -42,6 +42,23 @@ class historiaContrasena (models.Model):
     passAntiguo = models.CharField(max_length=20)
     preguntas = models.ForeignKey(preguntasSeguridad,null=True, on_delete=models.CASCADE)
 
+# tipo de usuario - Para comprobar funcionamiento
+class TipoDeUsuario(models.Model):
+    psicologo = "PSI"
+    paciente = "PAC"
+
+    USER_TYPE = [
+    (psicologo, "Psicólogo"),
+    (paciente, "Paciente"),
+  ]
+    nombre = models.CharField(max_length=3, choices=USER_TYPE, default=paciente)
+    descripcion = models.CharField(max_length=100)
+
+# registro de citas 
+class citas(models.Model):
+    tipoUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
+    fechaCita = models.DateTimeField(blank=True, default=datetime.date.today)
+
 
 # usuario main
 class usuario (models.Model):
@@ -54,27 +71,21 @@ class usuario (models.Model):
     ubicacion = models.CharField(max_length=10)
     #FK's
     passUser = models.ForeignKey(historiaContrasena, null=True, on_delete=models.CASCADE)
+    citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
+    tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
     
-# tipo de usuario - Para comprobar funcionamiento
-class TipoDeUsuario(models.Model):
-    psicologo = "PSI"
-    paciente = "PAC"
-
-    USER_TYPE = [
-    (psicologo, "Psicólogo"),
-    (paciente, "Paciente"),
-  ]
-    nombre = models.CharField(max_length=3, choices=USER_TYPE, default=paciente)
-
-
-
-# registro de citas 
-
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):
     IDusuario = models.ForeignKey(usuario, null=True, on_delete=models.CASCADE)
-    IDplataformas = models.ForeignKey(plataformasAceptadas, null=True, default=models.CASCADE)
+    IDplataformas = models.ForeignKey(plataformasAceptadas, null=True, on_delete=models.CASCADE)
     precio = models.IntegerField(max_length=10, default=15)
     duracionTerapia = models.IntegerField(max_length=10, default=1)    
 
+# Parametros pass
+# class parametrosPass (models.Model):
+#     longitudMin = models.IntegerField(max_length=8)
+#     longitudMax = models.IntegerField(max_length=20)
+#     intentosBloqueo = models.IntegerField(max_length=3)
+    
+     
