@@ -30,7 +30,110 @@
     </div>
 
 </div>
+<!-- sección de psicoYa / parte izquierda -->
+<div class="full-container-transparente">
 
+    <div class="column a">
+        <div class="inner">
+          <img class="img-slide" src="{% static '/images/sujeto_form.png'%}" />
+        <div class="form-bg">
+            <h3 style="color: #fff;">¿Tienes dudas?</h3>
+          <form class="form" action="/my-handling-form-page" method="post">
+            <ul>
+             <li>
+               <input placeholder="Nombre" type="text" id="name" name="user_name">
 
+               
+             </li>
+             <li>
+               <input placeholder="email" type="email" id="mail" name="user_mail">
+             </li>
+             <li>
+                <input placeholder="Teléfono" type="phone" id="phone" name="user_phone">
+              </li>
+             <li>
+               <textarea placeholder="Mensaje" id="msg" name="user_message"></textarea>
+             </li>
+            </ul>
+           </form>
+        </div>
+           
+        </div>
+    <!-- Parte derecha debajo del buscador. -->
+    </div>
+    <div class="column b">
+        <div class="">
+            <h1 class="main-title">Accesibles para estudiantes <br>
+                <span class="resaltado"> Somos PSICO-YA</span></h1>
+                <p>La atención psicológica que necesitas adecuada a ti</p>
+        <div class="seccion-inline">
+            <div class="inline a"> 
+                <img class="arrow-img" src="{% static '/images/arrow.png'%}" />
+            </div>
+            <div class="inline b">
+                <h2>Servicio 24/7</h2>
+                <p>Disponible par ti en todomomento, trabajamos durante todo el año, las 24 horas del día.</p>
+            </div>
+        </div>
+
+        <div class="seccion-inline">
+            <div class="inline a"> 
+                <img class="arrow-img" src="{% static '/images/arrow.png'%}" />
+            </div>
+            <div class="inline b">
+                <h2>Agenda tu sesión</h2>
+                <p>Simplemente ingresa en el perfil del psicólogo con quieras ver una consulta y solicita agendar una sesión.</p>
+            </div>
+        </div>
+
+        <div class="seccion-inline">
+            <div class="inline a"> 
+                <img class="arrow-img" src="{% static '/images/arrow.png'%}" />
+            </div>
+            <div class="inline b">
+                <h2>Fácil y directo</h2>
+                <p>Gestiona todo desde tu teléfono o computador, fácilmente y al alcance de un click!</p>
+            </div>
+        </div>
+    
+        </div>
+    </div>
+</div>
+<!-- Seccion de 3 tablas / servicios -->
+
+<!-- titulo -->
+<div style="padding-left: 25%; padding-right: 25%">
+<h1 class="main-title center"> Nuestro servicios</h1>
+<p class="paragraph center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, eveniet. Nulla, temporibus voluptatum inventore laborum recusandae porro? Consequuntur itaque mollitia quisquam, commodi architecto beatae error quasi, amet obcaecati ab esse!</p>
+</div>
+
+<!-- 3 tabs -->
+<div class="full-container-tabs">
+
+    <div class="column">
+        <div class="inner-table">
+          <img class="img-slide icon-table " src="{% static '/images/lupa.png'%}" />
+          <h1 class="second-title">Ubica tu psicólogo <br></h1>
+          <p class="paragraph"> Utiliza el buscador para encontrar el psicólogo que más se adapte a ti.</p>
+        <a class="btn center" href="#">Ver más</a>
+        </div>
+    </div>
+    <div class="column">
+        <div class="inner-table">
+          <img class="img-slide icon-table" src="{% static '/images/reloj.png'%}" /><br>
+          <h1 class="second-title">Agenda tu sesión <br></h1>
+          <p class="paragraph"> Una vez seleccionado el psicólogo, haz click en "Agendar sesión" para inciar contacto con él o ella.</p>
+            <a class="btn center" href="#">Ver más</a>
+        </div>
+    </div>
+    <div class="column">
+        <div class="inner-table">
+          <img class="img-slide icon-table" src="{% static '/images/video-conference.png'%}" />
+          <h1 class="second-title">Asiste a tu sesión Online <br></h1>
+          <p class="paragraph"> Ya definida la fecha en el paso anterior, asiste a tu sesión de psicoterapia online!</p>
+            <a class="btn center" href="#">Ver más</a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
