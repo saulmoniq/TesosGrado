@@ -20,7 +20,7 @@ body {
 }
 
 .container{
-    max-width: 850px;
+    max-width: 400px;
     margin: 0 auto;
 
 }
@@ -226,7 +226,7 @@ input, textarea{
         margin-top: 10px;
 
 }
-
+/* tables from 3tabs section */
 .inner-table{
     display: flex;
     background-color: var(--complementary-color);
@@ -249,4 +249,32 @@ input, textarea{
     font-size: 25px;
     line-height: normal;
     font-weight: 500;
+}
+
+/* Footer */
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 20px 0px;
+    margin-top: 3%;
+
+}
+
+.lista{
+    list-style: none;
+}
+
+.lista a{
+    font-family: var(--second-tile);
+    font-size: 18px;
+    line-height: 23px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-inline{
+    display: inline-block;
 }

@@ -24,8 +24,36 @@
 {% block content %}
 {% endblock %}
 
-    <!-- <div class="container">
-        <p class="center"> Diseñado por Saúl Monique</p>
-    </div> -->
+<footer class="footer">
+    <div class="container">
+        <h3 class="main-title">Sigue navegando</h3>
+        <ul>
+            <li class="lista"><a href="#">Iniciar sesión</a></li>
+            <li class="lista"><a href="#">Registrarse</a></li>
+            <li class="lista"><a href="#">FAQ</a></li>
+            <li class="lista"><a href="#">Inicio</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h3 class="main-title">Contáctanos</h3>
+        <img class="footer-inline" width="30px" src="{% static '/images/email.png' %}">
+        <p class="footer-inline center subtitle">info@psicoya.com</p><br>
+        <img class="footer-inline" width="30px" src="{% static '/images/phone-call.png' %}">
+        <p class="footer-inline center subtitle">04242235649</p><br>
+        <a href="#"><img  style="padding-right:5px;" class="footer-inline" width="25px" src="{% static '/images/twitter.png' %}"></a>
+        <a href="#"><img style="padding-right:5px;" class="footer-inline" width="25px" src="{% static '/images/instagram.png' %}"></a>
+        <a href="#"><img  style="padding-right:5px;" class="footer-inline" width="15px" src="{% static '/images/facebook.png' %}"></a>
+
+
+    </div>
+    <div class="container">
+        <a class="center" href="{% url 'home' %}"><img width="50px" src="{% static '/images/psicologia-white.png' %}"></a>
+       <p style="text-align: justify;" class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea id adipisci quae voluptate dolor magnam architecto doloribus libero nihil rem quia debitis totam ipsa atque, laborum aspernatur vel a? Adipisci.</p>
+    </div>
+</footer>
+
+<!-- <div class="container">
+    <p class="center"> Diseñado por Saúl Monique</p>
+</div> -->
 </body>
 </html>
