@@ -18,7 +18,44 @@
         </div>
         <div class="container">
             <a  class="header-derecho" href="{% url 'home' %}"><img width="50px" src="{% static '/images/user.png' %}"></a>
-            <a class="header-derecho" href="{% url 'home' %}"><img width="50px" src="{% static '/images/hamburger.png' %}"></a>
+            <a class="header-derecho" onclick="sidebar()"><img width="50px" src="{% static '/images/hamburger.png' %}">
+            </a>
+            <!-- sidebar menu -->
+            <div id="hamburguer" class="sidebar hidden">
+                <!--profile image & text-->
+                <div class="profile">
+                <img width="50px" src="{% static '/images/psicologia.png' %}">
+                </div>
+                <ul>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-home"></i></span>
+                            <span class="item">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa-regular fa-user"></i></span>
+                            <span class="item">Registrarse</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa-solid fa-question"></i></span>
+                            <span class="item">FAQ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa-solid fa-mobile-screen-button"></i></i></span>
+                            <span class="item">Contacto</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                 <!--menu item-->
+             </div>
+
         </div>
     </header>
 {% block content %}
@@ -36,7 +73,6 @@
     </div>
     <div class="container">
         <h3 class="main-title">Contáctanos</h3>
-        <h3 class="main-title">ContáctanosPrueba</h3>
         <img class="footer-inline" width="30px" src="{% static '/images/email.png' %}">
         <p class="footer-inline center subtitle">info@psicoya.com</p><br>
         <img class="footer-inline" width="30px" src="{% static '/images/phone-call.png' %}">
@@ -56,5 +92,11 @@
 <!-- <div class="container">
     <p class="center"> Diseñado por Saúl Monique</p>
 </div> -->
+<script> 
+    function sidebar(){
+        var hamburger = document.getElementById("hamburguer");
+        hamburger.classList.remove("hidden");
+    }
+</script>
 </body>
 </html>
