@@ -18,11 +18,13 @@
         </div>
         <div class="container">
             <a  class="header-derecho" href="{% url 'home' %}"><img width="50px" src="{% static '/images/user.png' %}"></a>
-            <a class="header-derecho" onclick="sidebar()"><img width="50px" src="{% static '/images/hamburger.png' %}">
+            <a href="javascript:void(0)" class="header-derecho" onclick="sidebar()"><img width="50px" src="{% static '/images/hamburger.png' %}">
             </a>
             <!-- sidebar menu -->
             <div id="hamburguer" class="sidebar hidden">
                 <!--profile image & text-->
+                <br>
+                <a style="font-size: 20px; color: #000; font-weight: 600; padding:10px;" href="javascript:void(0)" onclick="closeSidebar()"> X </a>
                 <div class="profile">
                 <img width="50px" src="{% static '/images/psicologia.png' %}">
                 </div>
@@ -96,6 +98,10 @@
     function sidebar(){
         var hamburger = document.getElementById("hamburguer");
         hamburger.classList.remove("hidden");
+    }
+    function closeSidebar(){
+        let close = document.getElementById("hamburguer");
+        close.classList.add("hidden");
     }
 </script>
 </body>
