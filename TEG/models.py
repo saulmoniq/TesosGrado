@@ -25,7 +25,8 @@ class plataformasAceptadas(models.Model):
   nombre = models.CharField(max_length=2,choices=PAYMENT_CHOICES,default=PagoMovil)
   descripcion = models.CharField(max_length=50,default="")
 
-
+  def __str__(self):
+    return self.nombre
 
 #Tablas variables
 
@@ -35,12 +36,18 @@ class plataformasAceptadas(models.Model):
 class preguntasSeguridad(models.Model):
     pregunta = models.CharField(max_length = 50)
     respuesta = models.CharField(max_length = 50)
+    def __str__(self):
+        return self.pregunta
+
+
 
 #  Historial de contraseña necesario
 class historiaContrasena (models.Model):
     passActual = models.CharField(max_length=20)
     passAntiguo = models.CharField(max_length=20)
     preguntas = models.ForeignKey(preguntasSeguridad,null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.passActual
 
 # tipo de usuario - Para comprobar funcionamiento
 class TipoDeUsuario(models.Model):
@@ -51,21 +58,25 @@ class TipoDeUsuario(models.Model):
     (psicologo, "Psicólogo"),
     (paciente, "Paciente"),
   ]
-    nombre = models.CharField(max_length=3, choices=USER_TYPE, default=paciente)
+    tipo = models.CharField(max_length=3, choices=USER_TYPE, default=paciente)
     descripcion = models.CharField(max_length=100)
+    def __str__(self):
+        return self.tipo
 
 # registro de citas 
 class citas(models.Model):
     tipoUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
-    fechaCita = models.DateTimeField(blank=True, default=datetime.date.today)
+    fechaCita = models.DateTimeField()
+    def __str__(self):
+        return str(self.fechaCita)
 
 
 # usuario main
 class usuario (models.Model):
     nombre = models.CharField(max_length=20)
-    fechaNacimiento = models.DateTimeField(blank=True, default=datetime.date.today)
-    cedula = models.IntegerField(max_length=8, default= 0)
-    telefono = models.IntegerField(max_length=8, default= 0)
+    fechaNacimiento = models.DateTimeField()
+    cedula = models.IntegerField(default= 0)
+    telefono = models.IntegerField(default= 0)
     correo = models.CharField(max_length=50)
     username = models.CharField(max_length=50)
     ubicacion = models.CharField(max_length=10)
@@ -73,14 +84,17 @@ class usuario (models.Model):
     passUser = models.ForeignKey(historiaContrasena, null=True, on_delete=models.CASCADE)
     citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
     tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
-    
+    def __str__(self):
+        return self.username
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):
     IDusuario = models.ForeignKey(usuario, null=True, on_delete=models.CASCADE)
     IDplataformas = models.ForeignKey(plataformasAceptadas, null=True, on_delete=models.CASCADE)
-    precio = models.IntegerField(max_length=10, default=15)
-    duracionTerapia = models.IntegerField(max_length=10, default=1)    
+    precio = models.IntegerField(default=15)
+    duracionTerapia = models.IntegerField(default=1)  
+    def __str__(self):
+        return self.IDusuario + " " + self.precio 
 
 # Parametros pass
 # class parametrosPass (models.Model):
