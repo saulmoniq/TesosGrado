@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'registro_estilos.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- banner -->
+<div class="full-container">
+    <div class="column a">
+        <div class="inner">
+            <h2 class="container">¡Regístrate!</h2>
+            <form class="form" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class ="formbtn" type="submit" value="Registrarse">
+            </form>
+        </div>
+    </div>
+    <div class="column b">
+        <div class="inner">
+            <h3 class="container">¡Regístrate!</h3>
+            <img class="img-slide" src="{% static '/images/sujeto_form.png'%}" />
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

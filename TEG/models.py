@@ -41,14 +41,6 @@ class preguntasSeguridad(models.Model):
 
 
 
-#  Historial de contraseña necesario
-class historiaContrasena (models.Model):
-    passActual = models.CharField(max_length=20)
-    passAntiguo = models.CharField(max_length=20)
-    preguntas = models.ForeignKey(preguntasSeguridad,null=True, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.passActual
-
 # tipo de usuario - Para comprobar funcionamiento
 class TipoDeUsuario(models.Model):
     psicologo = "PSI"
@@ -74,18 +66,20 @@ class citas(models.Model):
 # usuario main
 class usuario (models.Model):
     nombre = models.CharField(max_length=20)
-    fechaNacimiento = models.DateTimeField()
-    cedula = models.IntegerField(default= 0)
-    telefono = models.IntegerField(default= 0)
-    correo = models.CharField(max_length=50)
-    username = models.CharField(max_length=50)
-    ubicacion = models.CharField(max_length=10)
+    fechaNacimiento = models.DateTimeField("Fecha de nacimiento")
+    cedula = models.IntegerField("Cédula", default= 0)
+    telefono = models.IntegerField("Teléfono",default= 0)
+    correo = models.CharField("Correo",max_length=50)
+    username = models.CharField("Nombre de usuario", max_length=50)
+    ubicacion = models.CharField("Ubicación", max_length=10)
+    passActual = models.CharField("Contraseña", max_length=20, default=12345)
     #FK's
-    passUser = models.ForeignKey(historiaContrasena, null=True, on_delete=models.CASCADE)
     citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
     tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
     def __str__(self):
         return self.username
+    def get_absolute_url(self):
+        return "/" 
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):
@@ -95,6 +89,14 @@ class piscologoPublicacion (models.Model):
     duracionTerapia = models.IntegerField(default=1)  
     def __str__(self):
         return self.IDusuario + " " + self.precio 
+
+#  Historial de contraseña necesario
+class historiaContrasena (models.Model):
+    passActual = models.ForeignKey(usuario, null=True, on_delete=models.CASCADE)
+    passAntiguo = models.CharField(max_length=20)
+    preguntas = models.ForeignKey(preguntasSeguridad,null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.passActual)
 
 # Parametros pass
 # class parametrosPass (models.Model):
