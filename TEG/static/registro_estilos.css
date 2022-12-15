@@ -87,6 +87,7 @@ body {
     display: flex;
     /* height: 400px; */
     width: 100%;
+    padding: 20px 20px 0px 20px;
     background-color: var(--background-color);
     background-size: cover;
     background-position: center;
@@ -132,7 +133,7 @@ body {
   .column{
     display: flex;
     flex: 1;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     background-size: cover;
     background-position: center;
@@ -160,6 +161,7 @@ body {
 
 /* Titulos y textos */
 .main-title{
+    color: var(--main-color);
     font-family: var(--main-title);
     font-size: 32px;
     line-height: normal;

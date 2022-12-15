@@ -75,7 +75,7 @@ class usuario (models.Model):
     passActual = models.CharField("Contraseña", max_length=20, default=12345)
     #FK's
     citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
-    tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
+    tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE, verbose_name="Tipo de usuario")
     def __str__(self):
         return self.username
     def get_absolute_url(self):
