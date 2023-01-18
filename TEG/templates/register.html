@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'registro_estilos.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- banner -->
+<div class="full-container">
+    <div class="column a">
+        <div class="inner">
+            <h2 class="container main-title">CREAR UNA CUENTA</h2>
+            <form class="form" method="POST">
+                {% csrf_token %}
+                {{ register_form}}
+                <input class ="formbtn" type="submit" value="Registrarse">
+            </form>
+        </div>
+    </div>
+    <div class="column b">
+        <div class="inner">
+            <h3 class="container main-title">¡Bienvenido/a!</h3>
+            <p class="paragraph">Regístrate y comienza a buscar psicólogos, si eres uno, entonces podrás publicar tus servicios.</p>
+            <img class="img-slide" src="{% static '/images/sujeto_form.png'%}" />
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

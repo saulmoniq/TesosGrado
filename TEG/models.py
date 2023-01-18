@@ -6,7 +6,7 @@ from secrets import choice
 from unittest.util import _MAX_LENGTH
 from django.db import models
 import datetime
-
+from django.contrib.auth.base_user import AbstractBaseUser
 
 
 #Tablas con contenido fijo - De soporte
@@ -63,23 +63,33 @@ class citas(models.Model):
         return str(self.fechaCita)
 
 
-# usuario main
-class usuario (models.Model):
-    nombre = models.CharField(max_length=20)
-    fechaNacimiento = models.DateTimeField("Fecha de nacimiento")
-    cedula = models.IntegerField("Cédula", default= 0)
-    telefono = models.IntegerField("Teléfono",default= 0)
-    correo = models.CharField("Correo",max_length=50)
-    username = models.CharField("Nombre de usuario", max_length=50)
-    ubicacion = models.CharField("Ubicación", max_length=10)
-    passActual = models.CharField("Contraseña", max_length=20, default=12345)
-    #FK's
-    citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
-    tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE, verbose_name="Tipo de usuario")
-    def __str__(self):
-        return self.username
-    def get_absolute_url(self):
-        return "/" 
+# usuario main desactivaod previo al conocer el abstracbase
+    # class usuario (models.Model):
+    #     nombre = models.CharField(max_length=20)
+    #     fechaNacimiento = models.DateTimeField("Fecha de nacimiento")
+    #     cedula = models.IntegerField("Cédula", default= 0)
+    #     telefono = models.IntegerField("Teléfono",default= 0)
+    #     correo = models.CharField("Correo",max_length=50)
+    #     username = models.CharField("Nombre de usuario", max_length=50)
+    #     ubicacion = models.CharField("Ubicación", max_length=10)
+    #     passActual = models.CharField("Contraseña", max_length=20, default=12345)
+    #     #FK's
+    #     citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
+    #     tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE, verbose_name="Tipo de usuario")
+    #     def __str__(self):
+    #         return self.username
+    #     def get_absolute_url(self):
+    #         return "/" 
+
+# Usuario nuevo modelo para login
+class usuario(AbstractBaseUser):
+    username = models.CharField(max_length=40, unique=True)
+    email = models.CharField("email",max_length=50, default="test@ejemplo.com")
+    password = models.CharField("contraseña",max_length=20, default="yesterday"  )
+    last_login = models.CharField("contraseña",max_length=20, default="yesterday" )
+    
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):

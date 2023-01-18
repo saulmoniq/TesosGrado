@@ -9,15 +9,15 @@
 <body>
     <header class="header">
         <div class="container">
-            <a href="{% url 'home' %}"><img width="50px" src="{% static '/images/psicologia.png' %}"></a>
+            <a href="{% url 'teg:home' %}"><img width="50px" src="{% static '/images/psicologia.png' %}"></a>
         </div>
         <div class="container">
-            <a class="center " href="{% url 'home' %}"><img width="50px" src="{% static '/images/add.png' %}"></a>
+            <a class="center " href="{% url 'teg:home' %}"><img width="50px" src="{% static '/images/add.png' %}"></a>
             <p class="center subtitle">Agendar sesión</p>
 
         </div>
         <div class="container">
-            <a  class="header-derecho" href="{% url 'home' %}"><img width="50px" src="{% static '/images/user.png' %}"></a>
+            <a  class="header-derecho" href="{% url 'teg:home' %}"><img width="50px" src="{% static '/images/user.png' %}"></a>
             <a href="javascript:void(0)" class="header-derecho" onclick="sidebar()"><img width="50px" src="{% static '/images/hamburger.png' %}">
             </a>
             <!-- sidebar menu -->
@@ -86,7 +86,7 @@
 
     </div>
     <div class="container">
-        <a class="center" href="{% url 'home' %}"><img width="50px" src="{% static '/images/psicologia-white.png' %}"></a>
+        <a class="center" href="{% url 'teg:home' %}"><img width="50px" src="{% static '/images/psicologia-white.png' %}"></a>
        <p style="text-align: justify;" class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea id adipisci quae voluptate dolor magnam architecto doloribus libero nihil rem quia debitis totam ipsa atque, laborum aspernatur vel a? Adipisci.</p>
     </div>
 </footer>
