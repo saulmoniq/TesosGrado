@@ -19,46 +19,39 @@
 
     <div class="column">
         <div class="inner-table-var">
-          <p class="paragraph"> {{user.nombre}}</p>
-          <p class="paragraph"> {{user.username}} </p>
+          <p class="paragraph"> Nombre de usuario<br>{{user.username}} </p>
         </div>
     </div>
     <div class="column">
         <div class="inner-table-var">
-          <p class="paragraph"> {{user.username}} .</p>
-          <p class="paragraph"> {{user.username}} </p>
+          <p class="paragraph"> Email<br> {{user.email}} </p>
         </div>
     </div>
     </div>
 </div>
 </div>
 
+<h2>Agenda de próximas</h2>
 <!-- 3 tabs -->
 <div class="full-container-tabs">
-
-    <div class="column">
-        <div class="inner-table">
-          <img class="img-slide icon-table " src="{% static '/images/lupa.png'%}" />
-          <h1 class="second-title">Ubica tu psicólogo <br></h1>
-          <p class="paragraph"> Utiliza el buscador para encontrar el psicólogo que más se adapte a ti.</p>
-        <a class="btn center" href="#">Ver más</a>
+<div class="full-container-tabs-var">
+    <div class="column-var">
+        <div class="">
+        <img class="imgprofile center" src="{% static '/images/perfil_chica.jpg'%}"/>
         </div>
     </div>
-    <div class="column">
-        <div class="inner-table">
-          <img class="img-slide icon-table" src="{% static '/images/reloj.png'%}" /><br>
-          <h1 class="second-title">Agenda tu sesión <br></h1>
-          <p class="paragraph"> Una vez seleccionado el psicólogo, haz click en "Agendar sesión" para inciar contacto con él o ella.</p>
-            <a class="btn center" href="#">Ver más</a>
+    <div class="column-var">
+        <div class="">
+          <h1 class="second-title">{{user.username}} <br></h1>
+          <p class="paragraph"> Google Meet - Zoom.</p>
         </div>
     </div>
-    <div class="column">
-        <div class="inner-table">
-          <img class="img-slide icon-table" src="{% static '/images/video-conference.png'%}" />
-          <h1 class="second-title">Asiste a tu sesión Online <br></h1>
-          <p class="paragraph"> Ya definida la fecha en el paso anterior, asiste a tu sesión de psicoterapia online!</p>
-            <a class="btn center" href="#">Ver más</a>
+    <div class="column-var">
+        <div class="">
+          <h1 class="second-title">Próxima sesión: <br></h1>
+          <p class="paragraph"> 26/3/23</p>
         </div>
+    </div>
     </div>
 </div>
 

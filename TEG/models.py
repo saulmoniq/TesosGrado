@@ -43,7 +43,7 @@ class preguntasSeguridad(models.Model):
 
 # tipo de usuario - Para comprobar funcionamiento
 class TipoDeUsuariodos(models.Model):
-    psicologo = "PSI"
+    psicologo = "PIL"
     paciente = "PAC"
 
     USER_TYPE = [

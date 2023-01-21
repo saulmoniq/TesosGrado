@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import usuario
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
-from .forms import NewUserForm
+from .forms import nuevoUsuario
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 
@@ -19,17 +19,19 @@ def home(request):
 def perfil(request):
     return render(request, 'perfil.html')
 
+def postulate(request):
+    return render(request, 'postulate_psico.html')
 
 def register_request(request):
 	if request.method == "POST":
-		form = NewUserForm(request.POST)
+		form = nuevoUsuario(request.POST)
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
 			messages.success(request, "Registration successful." )
 			return redirect("teg:home")
 		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
+	form = nuevoUsuario()
 	return render (request=request, template_name="register.html", context={"register_form":form})
 
 def login_request(request):
