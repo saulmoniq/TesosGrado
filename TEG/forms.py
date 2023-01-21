@@ -42,11 +42,11 @@ class NewUserForm(UserCreationForm):
 	cedula = forms.IntegerField()
 	telefono = forms.IntegerField()
 	ubicacion = forms.CharField()
-	paciente = forms.ChoiceField(choices=psioPaciente, required=True)
+	tipo = forms.ChoiceField(choices=psioPaciente, required=True)
 
 	class Meta:
 		model = User
-		fields = ("nombre","apellido","paciente","fechaNacimiento","cedula", "telefono", "ubicacion", "username", "email", "password1", "password2")
+		fields = ("nombre","apellido","tipo","fechaNacimiento","cedula", "telefono", "ubicacion", "username", "email", "password1", "password2")
 
 	def save(self, commit=True):
 		user = super(NewUserForm, self).save(commit=False)

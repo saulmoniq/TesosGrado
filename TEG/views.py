@@ -16,6 +16,9 @@ from . import views
 def home(request):
     return render(request, 'home.html')
 
+def perfil(request):
+    return render(request, 'perfil.html')
+
 
 def register_request(request):
 	if request.method == "POST":

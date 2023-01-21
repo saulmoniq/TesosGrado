@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script src="https://kit.fontawesome.com/d6418d4463.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="javascript" href="{% static 'main.js' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Seccion de 3 tablas / servicios -->
+
+<!-- titulo -->
+<div style="padding-left: 25%; padding-right: 25%">
+<h1 class="main-title center"> Tu información</h1>
+<img class="imgprofile center" src="{% static '/images/perfil_chica.jpg'%}"/>
+<div class="full-container-tabs">
+
+    <div class="column">
+        <div class="inner-table-var">
+          <p class="paragraph"> Utiliza el buscador .</p>
+          <p class="paragraph"> Utiliza el buscador </p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="inner-table-var">
+          <p class="paragraph"> Utiliza el buscador .</p>
+          <p class="paragraph"> Utiliza el buscador </p>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- 3 tabs -->
+<div class="full-container-tabs">
+
+    <div class="column">
+        <div class="inner-table">
+          <img class="img-slide icon-table " src="{% static '/images/lupa.png'%}" />
+          <h1 class="second-title">Ubica tu psicólogo <br></h1>
+          <p class="paragraph"> Utiliza el buscador para encontrar el psicólogo que más se adapte a ti.</p>
+        <a class="btn center" href="#">Ver más</a>
+        </div>
+    </div>
+    <div class="column">
+        <div class="inner-table">
+          <img class="img-slide icon-table" src="{% static '/images/reloj.png'%}" /><br>
+          <h1 class="second-title">Agenda tu sesión <br></h1>
+          <p class="paragraph"> Una vez seleccionado el psicólogo, haz click en "Agendar sesión" para inciar contacto con él o ella.</p>
+            <a class="btn center" href="#">Ver más</a>
+        </div>
+    </div>
+    <div class="column">
+        <div class="inner-table">
+          <img class="img-slide icon-table" src="{% static '/images/video-conference.png'%}" />
+          <h1 class="second-title">Asiste a tu sesión Online <br></h1>
+          <p class="paragraph"> Ya definida la fecha en el paso anterior, asiste a tu sesión de psicoterapia online!</p>
+            <a class="btn center" href="#">Ver más</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

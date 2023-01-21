@@ -148,6 +148,8 @@ body {
     max-height: 300px;
 }
 
+
+
 .btn{
     font-family: var(--second-tile);
     background-color: var(--main-color);
@@ -234,6 +236,17 @@ input, textarea{
     color: #000;
     border-radius: 20px;
     margin: 40px;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.inner-table-var{
+    display: flex;
+    background-color: var(--main-color);
+    padding: 50px;
+    color: #fff;
+    border-radius: 3px;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -335,3 +348,12 @@ input, textarea{
 
 
 /* hide sidebar with menu */
+
+/* Profile styles */ 
+.imgprofile {
+    width: 100%;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+/* end profile styles */
