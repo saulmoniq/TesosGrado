@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block head %}
+<link rel="javascript" href="{% static 'main.js' %}">
 <link rel="stylesheet" href="{% static 'registro_estilos.css' %}">
 {% endblock %}
 
@@ -14,9 +15,11 @@
             <h2 class="container main-title">CREAR UNA CUENTA</h2>
             <form class="form" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input class ="formbtn" type="submit" value="Registrarse">
+                {{ login_form }}
+                <input class ="formbtn" type="submit" value="Registrarse">                
             </form>
+            <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+
         </div>
     </div>
     <div class="column b">

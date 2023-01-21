@@ -42,7 +42,7 @@ class preguntasSeguridad(models.Model):
 
 
 # tipo de usuario - Para comprobar funcionamiento
-class TipoDeUsuario(models.Model):
+class TipoDeUsuariodos(models.Model):
     psicologo = "PSI"
     paciente = "PAC"
 
@@ -57,39 +57,28 @@ class TipoDeUsuario(models.Model):
 
 # registro de citas 
 class citas(models.Model):
-    tipoUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE)
+    tipoUsuario = models.ForeignKey(TipoDeUsuariodos, null=True, on_delete=models.CASCADE)
     fechaCita = models.DateTimeField()
     def __str__(self):
         return str(self.fechaCita)
 
 
 # usuario main desactivaod previo al conocer el abstracbase
-    # class usuario (models.Model):
-    #     nombre = models.CharField(max_length=20)
-    #     fechaNacimiento = models.DateTimeField("Fecha de nacimiento")
-    #     cedula = models.IntegerField("Cédula", default= 0)
-    #     telefono = models.IntegerField("Teléfono",default= 0)
-    #     correo = models.CharField("Correo",max_length=50)
-    #     username = models.CharField("Nombre de usuario", max_length=50)
-    #     ubicacion = models.CharField("Ubicación", max_length=10)
-    #     passActual = models.CharField("Contraseña", max_length=20, default=12345)
-    #     #FK's
-    #     citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
-    #     tipoDeUsuario = models.ForeignKey(TipoDeUsuario, null=True, on_delete=models.CASCADE, verbose_name="Tipo de usuario")
-    #     def __str__(self):
-    #         return self.username
-    #     def get_absolute_url(self):
-    #         return "/" 
-
-# Usuario nuevo modelo para login
-class usuario(AbstractBaseUser):
-    username = models.CharField(max_length=40, unique=True)
-    email = models.CharField("email",max_length=50, default="test@ejemplo.com")
-    password = models.CharField("contraseña",max_length=20, default="yesterday"  )
-    last_login = models.CharField("contraseña",max_length=20, default="yesterday" )
-    
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+class usuario (models.Model):
+   nombre = models.CharField(max_length=20)
+   cedula = models.IntegerField("Cédula", default= 0)
+   telefono = models.IntegerField("Teléfono",default= 0)
+   correo = models.CharField("Correo",max_length=50, default="sample@gmail.com")
+   username = models.CharField("Nombre de usuario", max_length=50)
+   ubicacion = models.CharField("Ubicación", max_length=10)
+   passActual = models.CharField("Contraseña", max_length=20, default=12345)
+        #FK's
+   citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
+   tipoDeUsuario = models.ForeignKey(TipoDeUsuariodos, null=True, on_delete=models.CASCADE, verbose_name="Tipo de usuario")
+   def __str__(self):
+        return self.username
+   def get_absolute_url(self):
+        return "/" 
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):

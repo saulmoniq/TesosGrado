@@ -291,7 +291,7 @@ input, textarea{
     transition: all 0.5s ease;
 }
 
-.hidden{
+.hidden, .hidden-user{
     right: -230px!important;
 }
 

@@ -1,7 +1,7 @@
 from django import forms
-from .models import usuario
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db import models
 
 
 # class registroUsuario(forms.ModelForm):
@@ -26,16 +26,31 @@ from django.contrib.auth.models import User
 
 # Create your forms here.
 
+
 class NewUserForm(UserCreationForm):
+	psicologo = "PSI"
+	paciente = "pag"
+
+	psioPaciente= [
+		(psicologo, "Psicólogo"),
+		(paciente, "Paciente"),
+	]
 	email = forms.EmailField(required=True)
+	nombre = forms.CharField()
+	apellido = forms.CharField()
+	fechaNacimiento = forms.DateTimeField()
+	cedula = forms.IntegerField()
+	telefono = forms.IntegerField()
+	ubicacion = forms.CharField()
+	paciente = forms.ChoiceField(choices=psioPaciente, required=True)
 
 	class Meta:
 		model = User
-		fields = ("username", "email", "password1", "password2")
+		fields = ("nombre","apellido","paciente","fechaNacimiento","cedula", "telefono", "ubicacion", "username", "email", "password1", "password2")
 
 	def save(self, commit=True):
 		user = super(NewUserForm, self).save(commit=False)
-		user.email = self.cleaned_data['email']
+		user.email = self.cleaned_data['email'],
 		if commit:
 			user.save()
 		return user
