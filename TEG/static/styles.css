@@ -251,7 +251,8 @@ input, textarea{
         padding: 10px;
         border-radius: 10px;
         border: solid;
-        border-color: #fff;
+        border-width: 2px;
+        border-color: rgb(205, 205, 205);
         margin-bottom: 10px;
         margin-top: 10px;
 
@@ -387,3 +388,13 @@ input, textarea{
     object-fit: cover;
 }
 /* end profile styles */
+
+
+/* Form postulate */
+.formpostulacion{
+        display: flex;
+        flex-direction: column;
+
+}
+
+/*  */

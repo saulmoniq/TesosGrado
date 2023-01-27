@@ -119,6 +119,12 @@ USE_TZ = True
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'TEG/static'),]
 STATIC_URL = 'static/'
 
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'monique26331419@usm.edu.ve'
+EMAIL_HOST_PASSWORD = '9942434moniquE!!!'
+EMAIL_USE_TLS = True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

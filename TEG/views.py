@@ -6,8 +6,9 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import nuevoUsuario
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
-
-
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
 
 # Create your views here.
 from django.urls import path
@@ -19,8 +20,32 @@ def home(request):
 def perfil(request):
     return render(request, 'perfil.html')
 
+def send_email(mail, nombre):
+	context = {
+		'mail': mail,
+		'nombre' : nombre	}
+	template = get_template('correo.html')
+	content = template.render(context)
+
+	email = EmailMultiAlternatives(
+		'Un correo de prueba',
+		'CodigoFacilito',
+		settings.EMAIL_HOST_USER,
+		[mail],
+		cc=['monique26331419@usm.edu.ve']
+
+	)
+	email.attach_alternative(content, 'text/html')
+	email.send()
+
 def postulate(request):
-    return render(request, 'postulate_psico.html')
+	if request.method == "POST":
+		mail=request.POST.get('mail')
+		nombre=request.POST.get('nombre')
+
+		send_email(mail, nombre)
+    
+	return render(request, 'postulate_psico.html', {})
 
 def register_request(request):
 	if request.method == "POST":
