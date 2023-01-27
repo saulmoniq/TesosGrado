@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script src="https://kit.fontawesome.com/d6418d4463.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="javascript" href="{% static 'main.js' %}">
+{% endblock %}
+
+{% block content %}
+<!-- banner -->
+<div class="full-container">
+    <div class="column a">
+        <div class="inner">
+          <img class="img-slide" src="{% static '/images/recurso_13.png'%}" />
+        </div>
+    </div>
+    <div class="column b">
+        <div class="inner">
+            <h1 class="main-title">404 <br>
+                <span class="resaltado">PÁGINA NO ENCONTRADA</span></h1>
+                <p>Quizás escribiste mal la dirección o no tienes permisos para ver esta página.</p>
+            <a class="btn center" href="/">Volver al inicio</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

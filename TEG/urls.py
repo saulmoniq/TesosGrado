@@ -8,5 +8,7 @@ urlpatterns = [
     path("logout", views.logout_request, name="logout"),
     path("perfil", views.perfil, name="perfil"),
     path("psicologo", views.postulate, name="psicologo"),
+    path("publicarse", views.publicarse, name="publicarse"),
+    path("404", views.error, name="404"),
 
 ]

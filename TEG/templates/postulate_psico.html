@@ -24,15 +24,19 @@
 <label>Nombre</label>
 <input type="text" name="nombre" placeholder="Juan García">
 <label>Cédula</label>
-<input type="number" name="Cedula" placeholder="V25887452">
+<input type="number" name="cedula" placeholder="25887452">
 <label>N° FVP</label>
 <input type="number" name="FVP" placeholder="554879">
 <label>Teléfono</label>
 <input type="tel" name="Teléfono" placeholder="04241589548">
 <label>Nombre de usuario</label>
-<input type="text" name="nombre de usuario" placeholder="juangar22">
+{% if user.is_authenticated %}
+<input type="text" name="nombreusuario" placeholder="juangar22" value="{{user.username}}" readonly>
+{% else %}
+<input type="text" name="nombreusuario" placeholder="juangar22">
+{% endif %}
 <label>Ubicación</label>
-<input type="text" name="Ubicación" placeholder="Calle 12, con avenida el cruce">
+<input type="text" name="Ubicacion" placeholder="Calle 12, con avenida el cruce">
 <input style="font-size: 20px;" type="submit" value="Enviar">
 </form>
 

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script src="https://kit.fontawesome.com/d6418d4463.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="javascript" href="{% static 'main.js' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Seccion de 3 tablas / servicios -->
+
+<!-- titulo -->
+<div style="padding-left: 25%; padding-right: 25%">
+<h1 class="main-title center">¡Postúlate para ser psicólogo!</h1>
+<p class="paragraph">¡Hola {{user.username}}! Postula ahora mismo tus sesiones como psicologo.  </p>
+
+</div>
+</div>
+
+<h2>Agenda de próximas</h2>
+
+{% endblock %}
