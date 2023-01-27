@@ -9,21 +9,44 @@ from django.contrib.auth import login, authenticate, logout
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+from django.contrib.auth.decorators import login_required, user_passes_test
+
 
 # Create your views here.
 from django.urls import path
 from . import views
 
+# Inicio
 def home(request):
     return render(request, 'home.html')
 
+
+
+# 404
+def error(request):
+    return render(request, '404.html')
+
+# perfil
 def perfil(request):
     return render(request, 'perfil.html')
 
-def send_email(mail, nombre):
+# Comprobacion que es psicologo
+@login_required(login_url='/login')
+@user_passes_test(lambda u: u.groups.filter(name='psicologo').exists(), login_url='/404')
+def publicarse(request):
+    return render(request, 'publicarse.html')
+
+# Enviar email-form
+def send_email(mail, nombre, cedula, FVP, Teléfono, nombreusuario, Ubicacion):
 	context = {
 		'mail': mail,
-		'nombre' : nombre	}
+		'nombre' : nombre,
+		'cedula' : cedula,
+		'FVP' : FVP,
+		'Teléfono' : Teléfono,
+		'nombreusuario' : nombreusuario,
+		'Ubicacion' : Ubicacion
+			}
 	template = get_template('correo.html')
 	content = template.render(context)
 
@@ -38,15 +61,22 @@ def send_email(mail, nombre):
 	email.attach_alternative(content, 'text/html')
 	email.send()
 
+# enviar email con informacion
 def postulate(request):
 	if request.method == "POST":
 		mail=request.POST.get('mail')
 		nombre=request.POST.get('nombre')
+		cedula=request.POST.get('cedula')
+		FVP=request.POST.get('FVP')
+		Teléfono=request.POST.get('Teléfono')
+		nombreusuario=request.POST.get('nombreusuario')
+		Ubicacion=request.POST.get('Ubicacion')
 
-		send_email(mail, nombre)
+		send_email(mail, nombre, cedula, FVP, Teléfono, nombreusuario, Ubicacion )
     
 	return render(request, 'postulate_psico.html', {})
 
+# Registro
 def register_request(request):
 	if request.method == "POST":
 		form = nuevoUsuario(request.POST)
@@ -59,6 +89,7 @@ def register_request(request):
 	form = nuevoUsuario()
 	return render (request=request, template_name="register.html", context={"register_form":form})
 
+# login
 def login_request(request):
 	if request.method == "POST":
 		form = AuthenticationForm(request, data=request.POST)
@@ -77,6 +108,7 @@ def login_request(request):
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form})
 
+# logout
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
