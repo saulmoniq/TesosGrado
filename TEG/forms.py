@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import usuario
+from .models import usuario, piscologoPublicacion
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import models
@@ -34,3 +34,17 @@ class nuevoUsuario(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+# crate post psicologo
+class createPost(forms.ModelForm):
+    class Meta:
+        model = piscologoPublicacion
+        fields = "__all__"
+        widgets = {
+	   'usuario' : forms.TextInput(
+		attrs={
+		    'value': piscologoPublicacion.usuario,
+		    'readonly' : True,
+		}
+	   ),
+	}

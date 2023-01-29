@@ -397,4 +397,18 @@ input, textarea{
 
 }
 
-/*  */
+/* end */
+
+/* publicarse */
+.bgpurple{
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.publicarseform{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: stretch;
+        align-items: center;
+}

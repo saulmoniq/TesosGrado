@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<script src="https://kit.fontawesome.com/d6418d4463.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="javascript" href="{% static 'main.js' %}">
+{% endblock %}
+
+
+{% block content %}
+<h2>Update Menu Item</h2>
+<form method="post">
+  {% csrf_token %}
+  <p> {{ form.as_p }}</p>
+  <input type="submit" value="Actualizar" />
+</form>
+{% endblock %}

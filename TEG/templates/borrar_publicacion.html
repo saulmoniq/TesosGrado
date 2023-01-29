@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<link rel="javascript" href="{% static 'main.js' %}">
+<link rel="stylesheet" href="{% static 'registro_estilos.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Delete Your purchased</h2>
+<form method="post">
+  {% csrf_token %}
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <input type="submit" value="Eliminar" />
+</form>
+
+{% endblock %}

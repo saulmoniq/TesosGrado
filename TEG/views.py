@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .models import usuario
+from django.views.generic import ListView
+from .models import usuario, historiaContrasena, piscologoPublicacion
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from .forms import nuevoUsuario
@@ -10,6 +11,9 @@ from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, user_passes_test
+from .forms import createPost
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin 
+from django.contrib import messages
 
 
 # Create your views here.
@@ -30,11 +34,7 @@ def error(request):
 def perfil(request):
     return render(request, 'perfil.html')
 
-# Comprobacion que es psicologo
-@login_required(login_url='/login')
-@user_passes_test(lambda u: u.groups.filter(name='psicologo').exists(), login_url='/404')
-def publicarse(request):
-    return render(request, 'publicarse.html')
+
 
 # Enviar email-form
 def send_email(mail, nombre, cedula, FVP, Teléfono, nombreusuario, Ubicacion):
@@ -113,3 +113,46 @@ def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("teg:home")
+
+#Crear post piscologo
+
+
+# publicar con autenticacion, activar.
+# class createPost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+#   login_url="/login"
+#   model = piscologoPublicacion
+#   form_class = createPost
+#   template_name = "publicarse.html"
+  
+#   def test_func(self):
+#     return self.request.user.groups.filter(name='psicologo').exists()
+
+#   def handle_no_permission(self):
+#     messages.error(self.request, 'No tienes permisos para ver esta página, debes iniciar sesión y ser un psicólogo aprobado')
+#     return redirect('/404')
+
+
+#   publicarse para pruebas, borrar al concluir
+class createPost(CreateView):
+  login_url="/login"
+  model = piscologoPublicacion
+  form_class = createPost
+  template_name = "publicarse.html"
+  success_url = "/publicaciones"
+
+# # Actualizar publicaciones
+# class actualizarPost(UpdateView):
+#   template_name = "update_publicaciones.html"
+#   model = piscologoPublicacion
+#   form_class = createPost
+
+#   mostrar publicaciones
+class publicaciones(ListView):
+  model = piscologoPublicacion
+  template_name = "list_publicaciones.html"
+
+
+class borrarpublicacion(DeleteView):
+  model = piscologoPublicacion
+  success_url = '/publicaciones'
+  template_name = "borrar_publicacion.html"

@@ -19,6 +19,15 @@
     <div class="column b">
         <div class="inner">
             <h1 class="main-title">404 <br>
+
+                {% if messages %}
+                {% for message in messages %}
+                <script>  
+                       alert ("{{ message }}");  
+              </script>   
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 <span class="resaltado">PÁGINA NO ENCONTRADA</span></h1>
                 <p>Quizás escribiste mal la dirección o no tienes permisos para ver esta página.</p>
             <a class="btn center" href="/">Volver al inicio</a>

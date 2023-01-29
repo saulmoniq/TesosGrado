@@ -7,6 +7,7 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 import datetime
 from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import User
 
 
 #Tablas con contenido fijo - De soporte
@@ -82,12 +83,14 @@ class usuario (models.Model):
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):
-    IDusuario = models.ForeignKey(usuario, null=True, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     IDplataformas = models.ForeignKey(plataformasAceptadas, null=True, on_delete=models.CASCADE)
-    precio = models.IntegerField(default=15)
-    duracionTerapia = models.IntegerField(default=1)  
+    precio = models.IntegerField("Precio", default=15)
+    duracionTerapia = models.IntegerField("Duración de terapia", default=1)  
     def __str__(self):
-        return self.IDusuario + " " + self.precio 
+        return str(self.usuario) + " " + str(self.precio)
+    def get_absolute_url(self):
+        return "/"
 
 #  Historial de contraseña necesario
 class historiaContrasena (models.Model):
