@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import createPost
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin 
 from django.contrib import messages
+from django.db.models import Q
 
 
 # Create your views here.
@@ -24,6 +25,15 @@ from . import views
 def home(request):
     return render(request, 'home.html')
 
+# buscador
+def buscador(request):
+   if request.method == "POST":
+    buscado = request.POST['buscado']
+    psicologos = piscologoPublicacion.objects.filter(Q(precio__contains=buscado)|Q(duracionTerapia__contains=buscado)|Q(piscologoPublicacion__IDplataformas__contains=buscado))
+
+    return render(request, 'buscador.html', {'buscado': buscado, 'psicologos':psicologos })
+   else:
+    return render(request, 'buscador.html', {} )
 
 
 # 404
@@ -118,27 +128,27 @@ def logout_request(request):
 
 
 # publicar con autenticacion, activar.
-# class createPost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
-#   login_url="/login"
-#   model = piscologoPublicacion
-#   form_class = createPost
-#   template_name = "publicarse.html"
-  
-#   def test_func(self):
-#     return self.request.user.groups.filter(name='psicologo').exists()
-
-#   def handle_no_permission(self):
-#     messages.error(self.request, 'No tienes permisos para ver esta página, debes iniciar sesión y ser un psicólogo aprobado')
-#     return redirect('/404')
-
-
-#   publicarse para pruebas, borrar al concluir
-class createPost(CreateView):
+class createPost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
   login_url="/login"
   model = piscologoPublicacion
   form_class = createPost
   template_name = "publicarse.html"
-  success_url = "/publicaciones"
+  
+  def test_func(self):
+    return self.request.user.groups.filter(name='psicologo').exists()
+
+  def handle_no_permission(self):
+    messages.error(self.request, 'No tienes permisos para ver esta página, debes iniciar sesión y ser un psicólogo aprobado')
+    return redirect('/404')
+
+
+#   publicarse para pruebas, borrar al concluir
+# class createPost(CreateView):
+#   login_url="/login"
+#   model = piscologoPublicacion
+#   form_class = createPost
+#   template_name = "publicarse.html"
+#   success_url = "/publicaciones"
 
 # # Actualizar publicaciones
 # class actualizarPost(UpdateView):

@@ -13,5 +13,6 @@ urlpatterns = [
     path("publicaciones", views.publicaciones.as_view(), name="publicaciones"),
     # path('<pk>/actualizarPost', views.actualizarPost.as_view(), name="actualizarPost"),
     path('<pk>/borrarpublicacion', views.borrarpublicacion.as_view(), name="borrarpublicacion"),
+    path('buscador', views.buscador, name="buscador"),
 
 ]

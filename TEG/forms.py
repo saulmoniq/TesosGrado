@@ -43,8 +43,10 @@ class createPost(forms.ModelForm):
         widgets = {
 	   'usuario' : forms.TextInput(
 		attrs={
-		    'value': piscologoPublicacion.usuario,
+		    'value': '',
 		    'readonly' : True,
+		    'class': 'usuariomod',
+		    'hidden': True,
 		}
 	   ),
 	}
