@@ -9,7 +9,16 @@
 {% endblock %}
 
 {% block content %}
-<h2> Estos son todos los ingredientes disponibles actualmente:</h2>
+<h2 class="second-title center bgpurple">
+
+  <form class="" method="POST" action="{% url 'teg:buscador'%}">
+    {% csrf_token %}
+    <input class="" type="search" placeholder="Buscar psicólogos" aria-label="Search" name="buscado">
+    <input style="font-size: 20px;" type="submit" value="Buscar">
+  </form>
+
+</h2> 
+<h2 class="second-title center bgpurple">Conoce todos los psicólogos publicados</br></h2> 
 <table class="line-table center">
     <thead>
       <tr>
@@ -21,7 +30,7 @@
     </thead>
     <tbody>
     {% for key in object_list %}
-      <tr>
+      <tr class="border-table">
         <td class="columna-table">
           <li >{{ key.usuario }}</li>
         </td>
@@ -41,11 +50,13 @@
           {% endif %}
         </td> 
         <td class="columna-table">
-          <li><img class="arrow-img" src="{% static '/images/arrow.png'%}" /></li>
+          <!-- Poner este con el model para que arme el enlace a wha borrar el de abajo -->
+          <!-- <li ><a class="column-center" href="{url 'wha.me/+58{{key.telefono}}'}"><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li> -->
+          <li ><a class="column-center" href="{url 'wha.me/+58{{key.telefono}}'}"><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li>
         </td>
         <td class="columna-table">
           {% if user.id == key.usuario.id %}
-          <a id= "xbutton" href="{% url 'teg:borrarpublicacion' key.id %}">X</a>
+          <a id= "xbutton" href="{% url 'teg:borrarpublicacion' key.id %}"><img class="arrow-img-table" src="{% static '/images/remove.png'%}" /></a>
           {% endif %}
       </td> 
        

@@ -417,9 +417,8 @@ input, textarea{
 
 /* tabla publicaciones */
 .columna-table{
-    padding-right: 60px;
-    padding-bottom: 8%;
-}
+    padding-right: 40px;
+ }
 
 .line-table{
     list-style: none;
@@ -431,3 +430,28 @@ input, textarea{
     align-items: center;
     flex-direction: column;
 }
+.arrow-img-table{
+    width: 20px;
+}
+
+.column-center{
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: var(--second-tile);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.border-table{
+    margin: 10px;
+    display: flex;
+    border: #000 1px solid;
+    border-radius: 50px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* end */
