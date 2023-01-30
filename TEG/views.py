@@ -29,7 +29,7 @@ def home(request):
 def buscador(request):
    if request.method == "POST":
     buscado = request.POST['buscado']
-    psicologos = piscologoPublicacion.objects.filter(Q(precio__contains=buscado)|Q(duracionTerapia__contains=buscado)|Q(piscologoPublicacion__IDplataformas__contains=buscado))
+    psicologos = piscologoPublicacion.objects.filter(Q(precio__icontains=buscado)|Q(duracionTerapia__icontains=buscado)|Q(usuario__username__icontains=buscado)|Q(IDplataformas__nombre__icontains=buscado))
 
     return render(request, 'buscador.html', {'buscado': buscado, 'psicologos':psicologos })
    else:

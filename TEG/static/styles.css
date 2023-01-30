@@ -412,3 +412,22 @@ input, textarea{
         align-content: stretch;
         align-items: center;
 }
+
+/* end publicarse */
+
+/* tabla publicaciones */
+.columna-table{
+    padding-right: 60px;
+    padding-bottom: 8%;
+}
+
+.line-table{
+    list-style: none;
+}
+
+.center-table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
