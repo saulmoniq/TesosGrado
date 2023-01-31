@@ -454,4 +454,26 @@ input, textarea{
 
 }
 
+
+.textarea{
+        padding-right: 100px;
+        border-radius: 10px;
+        border: solid;
+        padding: 10px 200px 10px 5px;
+        border-width: 2px;
+        border-color: rgb(205, 205, 205);
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+.formbtn{
+    font-family: var(--second-tile);
+    background-color: var(--background-color);
+    padding: 10px;
+    color: var(--main-color);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+    }
+
 /* end */

@@ -13,10 +13,9 @@
 
   <form class="" method="POST" action="{% url 'teg:buscador'%}">
     {% csrf_token %}
-    <input class="" type="search" placeholder="Buscar psicólogos" aria-label="Search" name="buscado">
-    <input style="font-size: 20px;" type="submit" value="Buscar">
+    <input class="textarea" type="search" placeholder="Buscar psicólogos" aria-label="Search" name="buscado">
+    <input class="formbtn" type="submit" value="Buscar">
   </form>
-
 </h2> 
 <h2 class="second-title center bgpurple">Conoce todos los psicólogos publicados</br></h2> 
 <table class="line-table center">
