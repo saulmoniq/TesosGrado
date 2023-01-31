@@ -11,40 +11,60 @@
 {% block content %}
 <!-- Seccion de 3 tablas / servicios -->
 
+<h2 class="second-title center bgpurple">
+
+  <form class="" method="POST" action="{% url 'teg:buscador'%}">
+    {% csrf_token %}
+    <input class="textarea" type="search" placeholder="Buscar psicólogos" aria-label="Search" name="buscado">
+    <input class="formbtn" type="submit" value="Buscar">
+  </form>
+</h2> 
+<h2 class="second-title center bgpurple">Buscaste: {{buscado}}</br></h2> 
+
+
 <!-- titulo -->
 <div style="padding-left: 25%; padding-right: 25%">
-<h1 class="main-title center"> Buscador:</h1>
 {% if buscado %}
-<h1 class="main-title center"> Buscaste: {{buscado}}</h1>
 
-<table class="line-table">
+
+<table class="line-table center">
   <thead>
     <tr>
-      <th>psicólogo</th>
-      <th>Método de pago:</th>
-      <th>Precio:</th>
-      <th>Duración de la terapia:</th>
+      <th></th>
+      <th></th>
+      <th><th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
   {% for key in psicologos %}
-    <tr>
-      <td>
-        
-        <li>{{ key.usuario }}</li>
+    <tr class="border-table">
+      <td class="columna-table">
+        <li >{{ key.usuario }}</li>
       </td>
-      <td>
-          <li>{{ key.IDplataformas }}</li>
+      <td class="columna-table center-table">
+        {% if key.duracionTerapia > 1 %}
+        <li>Sesiones de: {{ key.duracionTerapia }} horas</li>
+        {% else %}
+        <li>Sesiones de: {{ key.duracionTerapia }} hora</li>
+        {% endif %}
+        <li class="resaltado">${{ key.precio }}</li>
+        {% if key.IDplataformas.nombre == "PM" %}
+          <li>Método: Pago móvil</li>
+        {% elif key.IDplataformas.nombre == "ZE" %}
+          <li>Método: Zelle</li>
+        {% else %}
+          <li>Método: Airtm </li>
+        {% endif %}
       </td> 
-      <td>
-          <li>{{ key.precio }}</li>
-      </td> 
-      <td>
-          <li>{{ key.duracionTerapia }}</li>
-      </td> 
-      <td>
+      <td class="columna-table">
+        <!-- Poner este con el model para que arme el enlace a wha borrar el de abajo -->
+        <!-- <li ><a class="column-center" href="{url 'wha.me/+58{{key.telefono}}'}"><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li> -->
+        <li ><a class="column-center" href="{url 'wha.me/+58{{key.telefono}}'}"><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li>
+      </td>
+      <td class="columna-table">
         {% if user.id == key.usuario.id %}
-        <a id= "xbutton" href="{% url 'teg:borrarpublicacion' key.id %}">X</a>
+        <a id= "xbutton" href="{% url 'teg:borrarpublicacion' key.id %}"><img class="arrow-img-table" src="{% static '/images/remove.png'%}" /></a>
         {% endif %}
     </td> 
      
@@ -56,29 +76,9 @@
 
 
 {% else %}
-<h1 class="main-title center"> No buscaste nada :c</h1>
+<h2 class="second-title center bgpurple"> No registramos tu búsqueda, intenta escribir algo y luego presionar "buscar"</h2>
 {% endif %}
-<img class="imgprofile center" src="{% static '/images/perfil_chica.jpg'%}"/>
-<div class="full-container-tabs">
 
-    <div class="column">
-        <div class="inner-table-var">
-          <p class="paragraph"> Nombre de usuario<br>{{user.username}} </p>
-          <form class="" method="POST" action="{% url 'teg:buscador'%}">
-            {% csrf_token %}
-            <input class="" type="search" placeholder="Buscar psicólogos" aria-label="Search" name="buscado">
-            <input style="font-size: 20px;" type="submit" value="Buscar">
-          </form>
-        </div>
-    </div>
-
-    <div class="column">
-        <div class="inner-table-var">
-          <p class="paragraph"> Email<br> {{user.email}} </p>
-        </div>
-    </div>
-    </div>
-</div>
 </div>
 
 
