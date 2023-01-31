@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="{% static 'registro_estilos.css' %}">
 {% endblock %}
 {% block content %}
-<h2>Delete Your purchased</h2>
-<form method="post">
+<h2 class="center">Borra una publicación:</h2>
+<form class="center" method="post">
   {% csrf_token %}
-  <p>Are you sure you want to delete "{{ object }}"?</p>
-  <input type="submit" value="Eliminar" />
+  <p class="center">¿Estás seguro/a de que quieres eliminar: "{{ object }}"?</p>
+  <input class="center" type="submit" value="Eliminar" />
 </form>
 
 {% endblock %}

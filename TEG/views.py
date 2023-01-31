@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
-from .models import usuario, historiaContrasena, piscologoPublicacion
+from .models import piscologoPublicacion, usuarioInfo
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from .forms import nuevoUsuario
@@ -29,7 +29,7 @@ def home(request):
 def buscador(request):
    if request.method == "POST":
     buscado = request.POST['buscado']
-    psicologos = piscologoPublicacion.objects.filter(Q(precio__icontains=buscado)|Q(duracionTerapia__icontains=buscado)|Q(usuario__username__icontains=buscado)|Q(IDplataformas__nombre__icontains=buscado))
+    psicologos = piscologoPublicacion.objects.filter(Q(precio__icontains=buscado)|Q(duracionTerapia__icontains=buscado)|Q(usuario__user__username__icontains=buscado)|Q(IDplataformas__nombre__icontains=buscado))
 
     return render(request, 'buscador.html', {'buscado': buscado, 'psicologos':psicologos })
    else:
@@ -42,7 +42,8 @@ def error(request):
 
 # perfil
 def perfil(request):
-    return render(request, 'perfil.html')
+    profile = usuarioInfo.objects.all() 
+    return render(request, 'perfil.html', {'usuarioInfo': profile})
 
 
 
@@ -142,15 +143,7 @@ class createPost(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     return redirect('/404')
 
 
-#   publicarse para pruebas, borrar al concluir
-# class createPost(CreateView):
-#   login_url="/login"
-#   model = piscologoPublicacion
-#   form_class = createPost
-#   template_name = "publicarse.html"
-#   success_url = "/publicaciones"
-
-# # Actualizar publicaciones
+# # Actualizar publicaciones - no funciono
 # class actualizarPost(UpdateView):
 #   template_name = "update_publicaciones.html"
 #   model = piscologoPublicacion

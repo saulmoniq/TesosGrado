@@ -8,7 +8,7 @@ from django.db import models
 import datetime
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import User
-
+from django import forms
 
 #Tablas con contenido fijo - De soporte
 # Metodo de pago para publicaciones.
@@ -42,68 +42,27 @@ class preguntasSeguridad(models.Model):
 
 
 
-# tipo de usuario - Para comprobar funcionamiento
-class TipoDeUsuariodos(models.Model):
-    psicologo = "PIL"
-    paciente = "PAC"
-
-    USER_TYPE = [
-    (psicologo, "Psicólogo"),
-    (paciente, "Paciente"),
-  ]
-    tipo = models.CharField(max_length=3, choices=USER_TYPE, default=paciente)
-    descripcion = models.CharField(max_length=100)
-    def __str__(self):
-        return self.tipo
-
-# registro de citas 
-class citas(models.Model):
-    tipoUsuario = models.ForeignKey(TipoDeUsuariodos, null=True, on_delete=models.CASCADE)
-    fechaCita = models.DateTimeField()
-    def __str__(self):
-        return str(self.fechaCita)
-
-
 # usuario main desactivaod previo al conocer el abstracbase
-class usuario (models.Model):
-   nombre = models.CharField(max_length=20)
+class usuarioInfo (models.Model):
+   user = models.OneToOneField(User, on_delete=models.CASCADE)
    cedula = models.IntegerField("Cédula", default= 0)
    telefono = models.IntegerField("Teléfono",default= 0)
-   correo = models.CharField("Correo",max_length=50, default="sample@gmail.com")
-   username = models.CharField("Nombre de usuario", max_length=50)
    ubicacion = models.CharField("Ubicación", max_length=10)
-   passActual = models.CharField("Contraseña", max_length=20, default=12345)
         #FK's
-   citas = models.ForeignKey(citas, null=True, on_delete=models.CASCADE)
-   tipoDeUsuario = models.ForeignKey(TipoDeUsuariodos, null=True, on_delete=models.CASCADE, verbose_name="Tipo de usuario")
    def __str__(self):
-        return self.username
+        return str(self.user.username)
    def get_absolute_url(self):
         return "/" 
 
 # publicaciones de psicologos 
 class piscologoPublicacion (models.Model):
-    usuario = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(usuarioInfo, null=True, on_delete=models.CASCADE)
     IDplataformas = models.ForeignKey(plataformasAceptadas, null=True, on_delete=models.CASCADE)
     precio = models.IntegerField("Precio", default=15)
     duracionTerapia = models.IntegerField("Duración de terapia", default=1)  
+
     def __str__(self):
-        return str(self.usuario) + " " + str(self.precio)
+        return str(self.usuario.user.email)
     def get_absolute_url(self):
-        return "/"
+        return "/publicaciones"
 
-#  Historial de contraseña necesario
-class historiaContrasena (models.Model):
-    passActual = models.ForeignKey(usuario, null=True, on_delete=models.CASCADE)
-    passAntiguo = models.CharField(max_length=20)
-    preguntas = models.ForeignKey(preguntasSeguridad,null=True, on_delete=models.CASCADE)
-    def __str__(self):
-        return str(self.passActual)
-
-# Parametros pass
-# class parametrosPass (models.Model):
-#     longitudMin = models.IntegerField(max_length=8)
-#     longitudMax = models.IntegerField(max_length=20)
-#     intentosBloqueo = models.IntegerField(max_length=3)
-    
-     

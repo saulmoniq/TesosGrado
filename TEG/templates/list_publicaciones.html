@@ -51,7 +51,7 @@
         <td class="columna-table">
           <!-- Poner este con el model para que arme el enlace a wha borrar el de abajo -->
           <!-- <li ><a class="column-center" href="{url 'wha.me/+58{{key.telefono}}'}"><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li> -->
-          <li ><a class="column-center" href="{url 'wha.me/+58{{key.telefono}}'}"><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li>
+          <li ><a class="column-center" href='https://wa.me/+58{{ key.usuario.telefono }}'><img class="arrow-img-table" src="{% static '/images/whatsapp.png'%}" /><br>Agendar</a></li>
         </td>
         <td class="columna-table">
           {% if user.id == key.usuario.id %}
