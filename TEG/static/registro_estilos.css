@@ -366,3 +366,8 @@ input, textarea{
     padding-right: 5px;
 }
 cierre form registro */
+
+.register {
+    display: flex;
+    flex-direction: column;
+}

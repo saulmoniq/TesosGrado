@@ -18,7 +18,7 @@
                 {{ login_form }}
                 <input class ="formbtn" type="submit" value="Iniciar sesión">                
             </form>
-            <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+            <p class="text-center">¿No tienes una cuenta? <a href="{% url 'teg:register' %}">Regístrate</a>.</p>
 
         </div>
     </div>
@@ -31,6 +31,11 @@
     </div>
 </div>
 
+<script>
+    document.querySelectorAll("label")[0].innerHTML="Nombre de ususario"
+    document.querySelectorAll("label")[1].innerHTML="Contraseña"
+    
 
+</script>
 
 {% endblock %}

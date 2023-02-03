@@ -13,7 +13,7 @@
     <div class="column a">
         <div class="inner">
             <h2 class="container main-title">CREAR UNA CUENTA</h2>
-            <form class="form" method="POST">
+            <form class="form register" method="POST">
                 {% csrf_token %}
                 {{ register_form}}
                 <input class ="formbtn" type="submit" value="Registrarse">
@@ -29,6 +29,13 @@
     </div>
 </div>
 
-
+<script>
+    document.querySelectorAll("label")[0].innerHTML="Nombre de ususario"
+    document.querySelectorAll("label")[2].innerHTML="Contraseña"
+    document.querySelectorAll("label")[3].innerHTML="<br>Repetir contraseña"
+    document.querySelectorAll(".helptext")[0].innerHTML="Menos de 150 caracteres alfanuméricos, símbolos permitidos:  @/./+/-/_ "
+    document.querySelectorAll(".helptext")[1].innerHTML="Tu contraseña debe tener más de 8 caracteres, no puede contener tu informacion y no puede ser solo numérico."
+    document.querySelectorAll(".helptext")[2].innerHTML="Repite la contraseña para verificarla."
+</script>
 
 {% endblock %}

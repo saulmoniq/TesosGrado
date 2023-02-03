@@ -20,7 +20,7 @@
         <div class="inner">
             <h1 class="main-title">SESIONES DE TERAPIA <br>
                 <span class="resaltado"> AL ALCANCE DE TU MANO</span></h1>
-            <a class="btn center" href="#">¿CÓMO FUNCIONA?</a>
+            <a class="btn center" href="#detalles">¿CÓMO FUNCIONA?</a>
         </div>
     </div>
 </div>
@@ -38,31 +38,13 @@
         <div class="inner">
           <img class="img-slide" src="{% static '/images/sujeto_form.png'%}" />
         <div class="form-bg">
-            <h3 style="color: #fff;">¿Tienes dudas?</h3>
-          <form class="form" action="/my-handling-form-page" method="post">
-            <ul>
-             <li>
-               <input placeholder="Nombre" type="text" id="name" name="user_name">
-
-               
-             </li>
-             <li>
-               <input placeholder="email" type="email" id="mail" name="user_mail">
-             </li>
-             <li>
-                <input placeholder="Teléfono" type="phone" id="phone" name="user_phone">
-              </li>
-             <li>
-               <textarea placeholder="Mensaje" id="msg" name="user_message"></textarea>
-             </li>
-            </ul>
-           </form>
+            <h3 style="color: #fff;"> <a style="text-decoration: none; color: #fff;" href="#footer">¿Tienes dudas?</a></h3>
         </div>
            
         </div>
     <!-- Parte derecha debajo del buscador. -->
     </div>
-    <div class="column b">
+    <div class="column b"id="detalles">
         <div class="">
             <h1 class="main-title">Accesibles para estudiantes <br>
                 <span class="resaltado"> Somos PSICO-YA</span></h1>
@@ -105,7 +87,7 @@
 <!-- titulo -->
 <div style="padding-left: 25%; padding-right: 25%">
 <h1 class="main-title center"> Nuestro servicios</h1>
-<p class="paragraph center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, eveniet. Nulla, temporibus voluptatum inventore laborum recusandae porro? Consequuntur itaque mollitia quisquam, commodi architecto beatae error quasi, amet obcaecati ab esse!</p>
+<p class="paragraph center">Encuentra un psicólogo facilmente gracias a nuestro buscador integrado, disponible en todo momento. </p>
 </div>
 
 <!-- 3 tabs -->
@@ -116,7 +98,7 @@
           <img class="img-slide icon-table " src="{% static '/images/lupa.png'%}" />
           <h1 class="second-title">Ubica tu psicólogo <br></h1>
           <p class="paragraph"> Utiliza el buscador para encontrar el psicólogo que más se adapte a ti.</p>
-        <a class="btn center" href="#">Ver más</a>
+        <a class="btn center" href="{% url 'teg:publicaciones' %}">Ver más</a>
         </div>
     </div>
     <div class="column">
@@ -124,7 +106,7 @@
           <img class="img-slide icon-table" src="{% static '/images/reloj.png'%}" /><br>
           <h1 class="second-title">Agenda tu sesión <br></h1>
           <p class="paragraph"> Una vez seleccionado el psicólogo, haz click en "Agendar sesión" para inciar contacto con él o ella.</p>
-            <a class="btn center" href="#">Ver más</a>
+            <a class="btn center" href="{% url 'teg:publicaciones' %}">Ver más</a>
         </div>
     </div>
     <div class="column">
@@ -132,7 +114,7 @@
           <img class="img-slide icon-table" src="{% static '/images/video-conference.png'%}" />
           <h1 class="second-title">Asiste a tu sesión Online <br></h1>
           <p class="paragraph"> Ya definida la fecha en el paso anterior, asiste a tu sesión de psicoterapia online!</p>
-            <a class="btn center" href="#">Ver más</a>
+            <a class="btn center" href="{% url 'teg:publicaciones' %}">Ver más</a>
         </div>
     </div>
 </div>

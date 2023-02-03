@@ -90,12 +90,17 @@
 
 <footer class="footer" id="footer">
     <div class="container">
-        <h3 class="main-title">Sigue navegando</h3>
+        <h3 class="main-title" style="color:#fff!important">Sigue navegando</h3>
         <ul>
-            <li class="lista"><a href="#">Iniciar sesión</a></li>
-            <li class="lista"><a href="#">Registrarse</a></li>
-            <li class="lista"><a href="#">FAQ</a></li>
-            <li class="lista"><a href="#">Inicio</a></li>
+            {% if user.is_authenticated %}
+            <p class="lista" href="#">Bienvenido, {{user.username}}</p>
+            <a class="lista" style="color: #fff; text-decoration: none" href="{% url 'teg:perfil' %}">Ir a perfil | </a>
+            <a class="lista" style="color: #fff; text-decoration: none" href="{% url 'teg:publicarse' %}">Publicarse | </a>
+            <a class="lista" style="color: #fff; text-decoration: none" href="/logout">Cerrar sesión</a>
+            {% else %}
+            <a class="lista" style="color: #fff; text-decoration: none" href="/login">Iniciar sesión</a>
+            {% endif %}
+            <li class="lista"><a href="{% url 'teg:register' %}">Registrarse</a></li>
         </ul>
     </div>
     <div class="container">
@@ -112,7 +117,7 @@
     </div>
     <div class="container">
         <a class="center" href="{% url 'teg:home' %}"><img width="50px" src="{% static '/images/psicologia-white.png' %}"></a>
-       <p style="text-align: justify;" class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea id adipisci quae voluptate dolor magnam architecto doloribus libero nihil rem quia debitis totam ipsa atque, laborum aspernatur vel a? Adipisci.</p>
+       <p style="text-align: justify;" class="paragraph">Encuentra un psicólogo facilmente gracias a nuestro buscador integrado, disponible en todo momento.</p>
     </div>
 </footer>
 

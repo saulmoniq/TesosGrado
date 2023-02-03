@@ -17,7 +17,7 @@
 <p class="paragraph">¡Hola {{user.username}}! Al estar publicado, los demás usuarios podrán encontrarte y contactarte, sigue los sencillos pasos para llevarlo a cabo.  </p>
 <h2 class="second-title center bgpurple">1. Selecciona tu método de pago.</h2> 
 <h2 class="second-title center bgpurple">2. Selecciona el precio de tu consulta. </h2> 
-<h2 class="second-title center bgpurple">3. Selecciona la duración de tu terapia. {{user.id}}</h2> 
+<h2 class="second-title center bgpurple">3. Selecciona la duración de tu terapia.</h2> 
 <p></p>
 
 
@@ -34,8 +34,7 @@
 <script>
     document.querySelectorAll(".usuariomod")[0].value="{{user.id}}";
     document.querySelectorAll("label")[0].innerHTML="";
+    document.querySelectorAll("label")[1].innerHTML="Método de pago"
 </script>
-
-<h2>Agenda de próximas</h2>
 
 {% endblock %}

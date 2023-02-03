@@ -14,26 +14,24 @@
 <!-- titulo -->
 <div style="padding-left: 25%; padding-right: 25%">
 <h1 class="main-title center"> Tu información</h1>
-<img class="imgprofile center" src="{% static '/images/perfil_chica.jpg'%}"/>
+<img class="imgprofile center" style="object-fit: contain;" src="{% static '/images/profilepic.jpeg'%}"/>
 <div class="full-container-tabs">
 
     <div class="column">
         <div class="inner-table-var">
           <p class="paragraph"> Nombre de usuario<br>{{ user.username }}</p>
-          <p class="paragraph"> Nombre de usuario<br>{{ cedula }}</p>
         </div>
     </div>
     <div class="column">
         <div class="inner-table-var">
-          <p class="paragraph"> Email<br>  </p>
-          <p class="paragraph"> Email<br>  </p>
+          <p class="paragraph"> Email<br>{{ user.email }}  </p>
         </div>
     </div>
     </div>
 </div>
 </div>
 
-<h2>Agenda de próximas</h2>
+<h2 class="center">Agenda de próximas sesiones</h2>
 <!-- 3 tabs -->
 <div class="full-container-tabs">
 <div class="full-container-tabs-var">
@@ -44,8 +42,8 @@
     </div>
     <div class="column-var">
         <div class="">
-          <h1 class="second-title">{{user.username}} <br></h1>
-          <p class="paragraph"> Google Meet - Zoom.</p>
+          <h1 class="second-title">Mariana <br></h1>
+          <p class="paragraph"> Google Meet</p>
         </div>
     </div>
     <div class="column-var">
